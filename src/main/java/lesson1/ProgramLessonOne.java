@@ -9,11 +9,18 @@ public class ProgramLessonOne {
 
     public static void main(String[] args) {
 
-        int hello = 5;
+        int hello = 43;
         AtomicInteger counter = new AtomicInteger();
+//
+//        System.out.printf("Простые числа от 1 до %d: \n%s\n", hello, SimpleNumbers(hello, counter));
+//        System.out.println("Количество операций: " + counter.get());
 
-        System.out.printf("Простые числа от 1 до %d: \n%s\n", hello, SimpleNumbers(hello, counter));
-        System.out.println("Количество операций: " + counter.get());
+        // recurcion(hello);
+        long startTime = System.currentTimeMillis();
+        System.out.println(Fibonacci2(hello, counter));
+        long finishTime = System.currentTimeMillis();
+
+        System.out.printf("Операция выполнена за %d мс, количество операций - %d", finishTime-startTime, counter.get());
 
 
     }
@@ -54,6 +61,42 @@ public class ProgramLessonOne {
         }
 
         return arrayList;
+    }
+
+    static void recurcion (int n)
+    {
+        System.out.println(n);
+        if (n>=3){
+            recurcion(n-1);
+            recurcion(n-2);
+            recurcion(n-2);
+        }
+    }
+
+    public static int Fibonacci (int n, AtomicInteger counter)
+    {
+        counter.getAndIncrement();
+        if (n == 0 || n == 1) return n;
+        return  Fibonacci(n-1, counter) + Fibonacci(n-2, counter);
+    }
+
+    public static int Fibonacci2(int num, AtomicInteger counter)
+    {
+
+        if (num == 0 || num == 1) return num;
+
+        int[] array = new int[num+1];
+        array[0] = 0;
+        array[1] = 1;
+
+        for(int i = 3; i<array.length; i++ )
+        {
+            counter.getAndIncrement();
+            array[i] = array[i-1]+array[i-2];
+        }
+
+        return array[num];
+
     }
 
 }
