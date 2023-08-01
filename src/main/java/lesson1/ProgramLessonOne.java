@@ -9,7 +9,7 @@ public class ProgramLessonOne {
 
     public static void main(String[] args) {
 
-        int hello = 10;
+        int hello = 5;
         AtomicInteger counter = new AtomicInteger();
 
         System.out.printf("Простые числа от 1 до %d: \n%s\n", hello, SimpleNumbers(hello, counter));
