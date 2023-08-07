@@ -5,7 +5,7 @@ public class Find {
     public static void main (String[] args){
         int [] array = new int[] {1,2,3,4,5,6,7,8,9};
 
-        System.out.println(find(array, 5));
+        System.out.println(binarySearch(array, 5, 0, array.length-1));
 
     }
 
@@ -15,6 +15,26 @@ public class Find {
         }
 
         return -1;
+    }
+
+    public static int binarySearch(int[]array, int value, int min, int max){
+        int midPoint;
+        if (max < min) {
+            return -1;
+        } else {
+            midPoint = (max-min) / 2 + min;
+        }
+
+        if (array[midPoint] < value){
+            return binarySearch(array, value, midPoint+1, max);
+        } else{
+            if (array[midPoint]>value){
+                return binarySearch(array, value, min, max-1);
+            } else {
+                return midPoint;
+            }
+        }
+
     }
 
 }
