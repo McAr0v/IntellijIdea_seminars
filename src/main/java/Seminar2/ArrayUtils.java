@@ -15,7 +15,7 @@ public class ArrayUtils {
 
         for (int i = 0; i < array.length; i++)
         {
-            array[i] = random.nextInt(-99, 100);
+            array[i] = random.nextInt(0, 20);
         }
 
         return array;
