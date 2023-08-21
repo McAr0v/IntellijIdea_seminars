@@ -10,12 +10,14 @@ public class ProgramLesson2 {
 
         ArrayUtils.printArray(array);
 
-        SortUtils.directSort(array);
+        SortUtils.quickSort(array);
 
         ArrayUtils.printArray(array);
 
+        int index = SearchUtils.binarySearch(array, 0, array.length-1, 5);
 
-
+        System.out.println();
+        System.out.println(index);
 
     }
 }
